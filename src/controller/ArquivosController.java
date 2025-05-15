@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ArquivosController implements IArquivosController {
-	
+
 	public ArquivosController() {
 		super();
 	}
@@ -20,7 +20,7 @@ public class ArquivosController implements IArquivosController {
 			System.out.println("Arquivo Encontrado");
 		} else {
 			throw new IOException("Diretório Inválido");
-		}	
+		}
 	}
 
 	@Override
@@ -28,21 +28,16 @@ public class ArquivosController implements IArquivosController {
 		// TODO Auto-generated method stub
 		File arq = new File(path, nome);
 		if (arq.exists() && arq.isFile()) {
-			try {
-                InputStreamReader fluxo = new InputStreamReader(new FileInputStream(arq));
-				BufferedReader leitor = new BufferedReader(fluxo);
-				String linha = leitor.readLine();
-				while(linha != null) {
-					System.out.println(linha);
-				}
-				fluxo.close();
-				leitor.close();	
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
+			InputStreamReader fluxo = new InputStreamReader(new FileInputStream(arq));
+			BufferedReader leitor = new BufferedReader(fluxo);
+			String linha = leitor.readLine();
+			while (linha != null) {
+				System.out.println(linha);
 			}
+			fluxo.close();
+			leitor.close();
 		} else {
 			throw new IOException("Arquivo Inválido");
 		}
-	}	
+	}
 }
