@@ -32,7 +32,16 @@ public class ArquivosController implements IArquivosController {
 			BufferedReader leitor = new BufferedReader(fluxo);
 			String linha = leitor.readLine();
 			while (linha != null) {
-				System.out.println(linha);
+                if (linha.contains("Fruits"))
+                {
+                    String[] fruta = linha.split(";");
+                    for (String item : fruta)
+                    {
+                        System.out.print(item + ", ");
+                    }
+                    System.out.println(" ");
+                }
+                linha = leitor.readLine(); 
 			}
 			fluxo.close();
 			leitor.close();
